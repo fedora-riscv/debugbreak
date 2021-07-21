@@ -18,11 +18,6 @@ BuildRequires:  gdb
 # No compiled binaries are installed, so this would be empty.
 %global debug_package %{nil}
 
-%if 0%{?epel} == 7
-# Turn off automatic Python byte compilation
-%global __os_install_post %(echo '%{__os_install_post}' | sed -e 's!/usr/lib[^[:space:]]*/brp-python-bytecompile[[:space:]].*$!!g')
-%endif
-
 %global common_description %{expand:
 debugbreak.h allows you to put breakpoints in your C/C++ code with a call to
 debug_break().
