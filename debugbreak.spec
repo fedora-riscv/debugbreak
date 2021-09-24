@@ -51,11 +51,9 @@ Provides:       %{name}-static = %{version}-%{release}
 
 
 %install
-install -d '%{buildroot}%{_includedir}'
-install -t '%{buildroot}%{_includedir}' -p -m 0644 %{name}.h
+install -t '%{buildroot}%{_includedir}' -D -p -m 0644 %{name}.h
 
-install -d '%{buildroot}%{_datadir}/%{name}'
-install -t '%{buildroot}%{_datadir}/%{name}' -p -m 0644 %{name}-gdb.py
+install -t '%{buildroot}%{_datadir}/%{name}' -D -p -m 0644 %{name}-gdb.py
 
 
 %check
