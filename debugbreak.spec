@@ -3,10 +3,10 @@ Summary:        Break into the debugger programmatically
 Version:        1.0
 Release:        %autorelease
 
-URL:            https://github.com/scottt/%{name}/
+URL:            https://github.com/scottt/debugbreak
 License:        BSD
 
-Source0:        %{url}/archive/v%{version}/%{name}-%{version}.tar.gz
+Source0:        %{url}/archive/v%{version}/debugbreak-%{version}.tar.gz
 
 BuildRequires:  gcc
 BuildRequires:  gcc-c++
@@ -41,7 +41,7 @@ debug_break().
 Summary:        %{summary}
 
 # Header-only library
-Provides:       %{name}-static = %{version}-%{release}
+Provides:       debugbreak-static = %{version}-%{release}
 
 %description devel %{common_description}
 
@@ -57,10 +57,10 @@ Provides:       %{name}-static = %{version}-%{release}
 
 %install
 install -d '%{buildroot}%{_includedir}'
-install -t '%{buildroot}%{_includedir}' -p -m 0644 %{name}.h
+install -t '%{buildroot}%{_includedir}' -p -m 0644 debugbreak.h
 
-install -d '%{buildroot}%{_datadir}/%{name}'
-install -t '%{buildroot}%{_datadir}/%{name}' -p -m 0644 %{name}-gdb.py
+install -d '%{buildroot}%{_datadir}/debugbreak'
+install -t '%{buildroot}%{_datadir}/debugbreak' -p -m 0644 debugbreak-gdb.py
 
 
 %check
@@ -91,10 +91,10 @@ EOF
 %doc HOW-TO-USE-DEBUGBREAK-GDB-PY.md
 %doc README.md
 
-%{_includedir}/%{name}.h
+%{_includedir}/debugbreak.h
 
-%dir %{_datadir}/%{name}
-%{_datadir}/%{name}/%{name}-gdb.py
+%dir %{_datadir}/debugbreak
+%{_datadir}/debugbreak/debugbreak-gdb.py
 
 
 %changelog
