@@ -1,7 +1,7 @@
 Name:           debugbreak
 Summary:        Break into the debugger programmatically
 Version:        1.0
-Release:        1%{?dist}
+Release:        %autorelease
 
 URL:            https://github.com/scottt/%{name}/
 License:        BSD
@@ -98,5 +98,4 @@ EOF
 
 
 %changelog
-* Mon Jun 21 2021 Benjamin A. Beasley <code@musicinmybrain.net> - 1.0-1
-- Initial package
+%autochangelog
