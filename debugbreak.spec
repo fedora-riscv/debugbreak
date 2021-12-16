@@ -35,6 +35,8 @@ debug_break().
 %package devel
 Summary:        %{summary}
 
+BuildArch:      noarch
+
 # Header-only library
 Provides:       debugbreak-static = %{version}-%{release}
 
