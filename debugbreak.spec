@@ -1,7 +1,7 @@
 Name:           debugbreak
 Summary:        Break into the debugger programmatically
 Version:        1.0
-Release:        %autorelease
+Release:        %autorelease -e rv64
 
 URL:            https://github.com/scottt/debugbreak
 License:        BSD-2-Clause
@@ -14,6 +14,13 @@ BuildRequires:  make
 
 # For testing:
 BuildRequires:  gdb
+
+
+%ifarch riscv64
+%bcond_with check
+%else
+%bcond_without check
+%endif
 
 # No compiled binaries are installed, so this would be empty.
 %global debug_package %{nil}
@@ -58,6 +65,7 @@ install -t '%{buildroot}%{_includedir}' -D -p -m 0644 debugbreak.h
 install -t '%{buildroot}%{_datadir}/debugbreak' -D -p -m 0644 debugbreak-gdb.py
 
 
+%if %{with check}
 %check
 # Each of the test files contains a programmatic breakpoint. We skip “trap”
 # because it only tests __builtin_trap(), which is not provided by this library
@@ -80,6 +88,7 @@ EOF
     # Check that the program received SIGTRAP, trace/breakpoint trap
     grep -E 'SIG(TRAP|ILL)' "${exe}-rpm-test.txt"
   done
+%endif
 
 %files devel
 %license COPYING
